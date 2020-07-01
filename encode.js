@@ -1,15 +1,19 @@
 function encode_bits(bits, samplerate, bitsize) {
    let samples = [];
-   
+   let NRZ = [];
+
    for(let t=0;t<bits.length;t++) {
       for(let j=0; j<bitsize; j++) {
          let clk = j < bitsize / 2 ? 1 : 0;
          let s = clk ^ bits[t];
          samples.push(s ? 0.75 : -0.75);
+         NRZ.push(bits[t]);
       }     
    }
 
-   return new Float32Array(samples);
+   samples = new Float32Array(samples);
+
+   return { samples, NRZ };
 }
 
 function bytes_to_bits(bytes) {
@@ -32,15 +36,15 @@ const fs = require("fs");
 const file_input_name = "prova.bin";  
 const file_input = fs.readFileSync(file_input_name);
 
-let buffer = [ 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0, ...file_input];
+let buffer = [ 0, 0xE6, ...file_input];
 
 let bits = bytes_to_bits(buffer);
 let samplerate = 44100;
 let bitrate = 1500;
 let bitsize = Math.round(samplerate/bitrate);
-let samples = encode_bits(bits, samplerate, bitsize);
+let { samples, NRZ } = encode_bits(bits, samplerate, bitsize);
 
-let channelData = [ samples ];
+let channelData = [ samples, NRZ ];
 
 // e li scrive su su .WAV leggibile con audacity
 writeWavFile(channelData, samplerate, "encoded.wav");
