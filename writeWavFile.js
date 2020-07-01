@@ -6,7 +6,7 @@ function writeWavFile(channelData, sampleRate, name) {
        sampleRate,
        channelData
     };
-
+    
     const buffer = WavEncoder.encode.sync(wavData, { bitDepth: 16, float: false });
     fs.writeFileSync(name, new Buffer(buffer));
 }
