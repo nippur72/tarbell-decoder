@@ -34,6 +34,9 @@ According to the Tarbell format, which is manchester encoded, an "HL" pulse (hig
 
 In the next step, groups of 8 bits are assembled into bytes and finally written to file.
 
+With face A I had to invert the polarity of the Waveform in order to decode it (Audacity: "invert" option). Face B is normal polarity.
+
+
 
 
 
