@@ -3,7 +3,7 @@ var Fili = require('fili');
 // applica un filtro passa basso di tipo FIR
 // samples: il vettore con i campioni audio da filtrare
 // samplerate: il sample rate dell'audio
-// oder: la grandezza del filtro FIR (numero di taps)
+// order: la grandezza del filtro FIR (numero di taps)
 // cutoff: frequenza di taglio del filtro LP
 //
 // restituisce un vettore con i campioni filtrati

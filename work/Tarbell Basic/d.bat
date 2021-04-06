@@ -1,0 +1,1 @@
+yazd.exe out.bin out.asm --addr:256

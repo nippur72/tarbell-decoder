@@ -1,23 +1,12 @@
 ## TARBELL-DECODER
 
-# install
+This is a small utility that I used to decode two Tarbell cassette interface recordings:
 
-Devi prima aver installato [nodejs](nodejs.org).
+- Tarbell Basic (audio from by Jonathan Haddox)
+- Bermuda Triangle LP hidden message (audio from Pierre Dandumont)
 
-Clona il repo e poi da linea di comando:
+(you can find them in the "work" directory)
 
-```
-$ npm i
-```
 
-# run
-
-Metti il file `test.wav` nella cartella. Da linea di comando:
-
-```
-$ node index
-```
-
-Produce il file `out.wav`
 
 
